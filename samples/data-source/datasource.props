@@ -1,0 +1,47 @@
+#
+# SubSection 1.0 # JDBCProvider attributes
+#
+ResourceType=JDBCProvider
+ImplementingResourceType=JDBCProvider
+ResourceId=Cell=!{cellName}:JDBCProvider=Derby JDBC Provider
+#
+
+#
+#Properties
+#
+classpath={${DERBY_JDBC_DRIVER_PATH}/derby.jar}
+implementationClassName=org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource #required
+name=Derby JDBC Provider #required
+isolatedClassLoader=false #boolean,default(false)
+nativepath={}
+description=Derby embedded non-XA  JDBC Provider. This provider is only configurable in version 6.0.2 and later nodes
+providerType=Derby JDBC Provider #readonly
+xa=false #boolean,default(false)
+
+
+#
+# SubSection 1.0.1.0 # DataSource attributes
+#
+ResourceType=DataSource
+ImplementingResourceType=JDBCProvider
+ResourceId=Cell=!{cellName}:JDBCProvider=Derby JDBC Provider:DataSource=jdbc/myDataSource
+#
+
+#
+#Properties
+#
+name=myDataSource #required
+category=null
+datasourceHelperClassname=com.ibm.websphere.rsadapter.DerbyDataStoreHelper
+authMechanismPreference=BASIC_PASSWORD #ENUM(BASIC_PASSWORD|KERBEROS),default(BASIC_PASSWORD)
+statementCacheSize=10 #integer,default(10)
+providerType=Derby JDBC Provider #readonly
+jndiName="jdbc/myDataSource"
+relationalResourceAdapter=WebSphere Relational Resource Adapter #ObjectName(J2CResourceAdapter)
+diagnoseConnectionUsage=false #boolean,default(false)
+xaRecoveryAuthAlias=null
+authDataAlias=
+manageCachedHandles=false #boolean,default(false)
+provider=Derby JDBC Provider #ObjectName(JDBCProvider),readonly
+description=New JDBC Datasource. This Datasource type is only configurable in version 6.0.2 and later nodes
+logMissingTransactionContext=true #boolean,default(true)
