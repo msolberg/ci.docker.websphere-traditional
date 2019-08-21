@@ -54,7 +54,7 @@ $ docker cp changes.props <CONTAINERID>:/tmp/changes.props
 $ docker exec -it <CONTAINERID> /bin/bash
 $ /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -conntype NONE
 wsadmin> AdminTask.applyConfigProperties(['-propertiesFileName /tmp/changes.props -reportFileName /tmp/changes.txt'])
-wsadmin> wsadmin>AdminConfig.save()
+wsadmin> AdminConfig.save()
 ```
 
 
