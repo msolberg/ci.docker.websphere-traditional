@@ -1,0 +1,111 @@
+#
+# SubSection 1.0.0 # JAASAuthData Section
+#
+ResourceType=JAASAuthData
+ImplementingResourceType=Security
+ResourceId=Cell=!{cellName}:Security=:JAASAuthData=alias#DefaultNode01/myOracleDataSource
+AttributeInfo=authDataEntries
+
+#
+#Properties
+#
+password=password #required
+alias="DefaultNode01/myOracleDataSource" #required
+userId=username #required
+description=
+
+#
+# SubSection 1.0 # JDBCProvider attributes
+#
+ResourceType=JDBCProvider
+ImplementingResourceType=JDBCProvider
+ResourceId=Cell=!{cellName}:JDBCProvider=Oracle JDBC Driver
+
+#
+#Properties
+#
+classpath={${ORACLE_JDBC_DRIVER_PATH}/ojdbc8.jar}
+implementationClassName=oracle.jdbc.pool.OracleConnectionPoolDataSource #required
+name=Oracle JDBC Driver #required
+isolatedClassLoader=false #boolean,default(false)
+nativepath={}
+description=Oracle JDBC Driver
+providerType=Oracle JDBC Driver #readonly
+xa=false #boolean,default(false)
+
+#
+# SubSection 1.0.1.0 # DataSource attributes
+#
+ResourceType=DataSource
+ImplementingResourceType=JDBCProvider
+ResourceId=Cell=!{cellName}:JDBCProvider=Oracle JDBC Driver:DataSource=myOracleDataSource
+
+#
+#Properties
+#
+name=myOracleDataSource #required
+category=null
+datasourceHelperClassname=com.ibm.websphere.rsadapter.Oracle11gDataStoreHelper
+authMechanismPreference=BASIC_PASSWORD #ENUM(BASIC_PASSWORD|KERBEROS),default(BASIC_PASSWORD)
+statementCacheSize=10 #integer,default(10)
+providerType=Oracle JDBC Driver #readonly
+jndiName="jdbc/myOracleDataSource"
+relationalResourceAdapter=WebSphere Relational Resource Adapter #ObjectName(J2CResourceAdapter)
+diagnoseConnectionUsage=false #boolean,default(false)
+xaRecoveryAuthAlias=null
+authDataAlias="DefaultNode01/myOracleDataSource"
+manageCachedHandles=false #boolean,default(false)
+provider=Oracle JDBC Driver #ObjectName(JDBCProvider),readonly
+description=New JDBC Datasource
+logMissingTransactionContext=true #boolean,default(true)
+
+#
+# SubSection 1.0.1.0.0.4 # DataSource J2EE Properties
+#
+ResourceType=J2EEResourcePropertySet
+ImplementingResourceType=JDBCProvider
+ResourceId=Cell=!{cellName}:JDBCProvider=Oracle JDBC Driver:DataSource=myOracleDataSource:J2EEResourcePropertySet=
+AttributeInfo=resourceProperties(name,value)
+
+#
+#Properties
+#
+userDefinedErrorMap= #String
+loginTimeout= #integer
+serverName= #String
+oracleLogFileSizeLimit=0 #integer
+portNumber=1521 #integer
+oracleLogTraceLevel=INFO #String
+validateNewConnectionRetryInterval=3 #long
+connRetryIntervalDuringDBFailover= #long
+preTestSQLString=SELECT 1 FROM DUAL #String
+enableMultithreadedAccessDetection=false #boolean
+validateNewConnectionRetryCount=100 #integer
+description= #String
+dataSourceName= #String
+validateNewConnection=false #boolean
+dbFailOverEnabled= #boolean
+databaseName= #String
+webSphereDefaultQueryTimeout= #integer
+beginTranForVendorAPIs=false #boolean
+connRetriesDuringDBFailover= #integer
+freeResourcesOnClose=false #boolean
+errorDetectionModel=ExceptionMapping #String
+URL=jdbc:oracle:oci:@//localhost:1521/database #String,required
+oracleLogFileCount=1 #integer
+driverType= #String
+jmsOnePhaseOptimization=false #boolean
+TNSEntryName= #String
+connectionSharing=1 #integer
+syncQueryTimeoutWithTransactionTimeout= #boolean
+validateNewConnectionTimeout= #integer
+oracleLogPackageName=oracle.jdbc.driver #String
+reauthentication=false #boolean
+oracleLogFileName= #String
+beginTranForResultSetScrollingAPIs=false #boolean
+oracleLogFormat=SimpleFormat #String
+webSphereDefaultIsolationLevel= #integer
+networkProtocol= #String
+nonTransactionalDataSource=false #boolean
+enableClientInformation=false #boolean
+
