@@ -16,7 +16,7 @@
 ############################################################################
 
 # Build step - download and install tWAS
-FROM registry.access.redhat.com/ubi7/ubi as builder
+FROM registry.access.redhat.com/ubi8/ubi as builder
 RUN yum makecache fast && yum update -y && yum install -y openssl wget unzip
 
 ARG IMURL
@@ -54,7 +54,7 @@ RUN sed -i 's/-Xms256m/-Xms1024m/g' /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh 
 
 
 # Final image
-FROM registry.access.redhat.com/ubi7/ubi
+FROM registry.access.redhat.com/ubi8/ubi
 ARG BUILDLABEL=none
 
 LABEL maintainer="Glenn Marcy <gmarcy@us.ibm.com>" \
